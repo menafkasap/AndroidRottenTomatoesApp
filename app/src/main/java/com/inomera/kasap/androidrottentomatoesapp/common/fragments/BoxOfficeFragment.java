@@ -18,4 +18,5 @@ public class BoxOfficeFragment extends Fragment {
         View v =inflater.inflate(R.layout.fragment_box_office,container,false);
         return v;
     }
+
 }
