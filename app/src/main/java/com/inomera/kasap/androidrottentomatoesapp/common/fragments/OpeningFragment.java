@@ -24,30 +24,24 @@ import com.orhanobut.wasp.CallBack;
 import com.orhanobut.wasp.WaspError;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class OpeningFragment extends Fragment {
 
-
-    private RecyclerView recyclerView;
+    private RecyclerView mRecyclerView;
     private MyAdapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
 
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v =inflater.inflate(R.layout.fragment_opening,container,false);
-        recyclerView = (RecyclerView)v.findViewById(R.id.card_view);
-        // use this setting to improve performance if you know that changes
-        // in content do not change the layout size of the RecyclerView
-        recyclerView.setHasFixedSize(true);
+        mRecyclerView = (RecyclerView) v.findViewById(R.id.my_recycler_view);
+
+        mRecyclerView.setHasFixedSize(true);
 
         // use a linear layout manager
         mLayoutManager = new LinearLayoutManager(getActivity());
-        recyclerView.setLayoutManager(mLayoutManager);
-        // Use the default animator
-        recyclerView.setItemAnimator(new DefaultItemAnimator());
-        // you could add item decorators
-        RecyclerView.ItemDecoration itemDecoration = new DividerItemDecoration(getActivity(), DividerItemDecoration.VERTICAL_LIST);
-        recyclerView.addItemDecoration(itemDecoration);
+        mRecyclerView.setLayoutManager(mLayoutManager);
 
         ArrayList<String> input = new ArrayList<String>();
         for (int i = 0; i < 100; i++) {
@@ -55,10 +49,11 @@ public class OpeningFragment extends Fragment {
         }
         // specify an adapter (see also next example)
         mAdapter = new MyAdapter(input);
-        recyclerView.setAdapter(mAdapter);
+        mRecyclerView.setAdapter(mAdapter);
         mAdapter.remove("Test1");
         return v;
     }
+
     private void getOpening() {
 
         WaspApplication.getService().getOpening("n594qzwyec5cdgr3tdrpfee3", new CallBack<Movie>() {
