@@ -1,32 +1,21 @@
-package com.inomera.kasap.androidrottentomatoesapp.common.WASP;
+package com.inomera.kasap.androidrottentomatoesapp.network;
 
 /**
  * Created by Menaf on 19.06.2015
  */
 import com.orhanobut.wasp.CallBack;
-import com.orhanobut.wasp.http.Auth;
-import com.orhanobut.wasp.http.Body;
-import com.orhanobut.wasp.http.BodyMap;
 import com.orhanobut.wasp.http.DELETE;
-import com.orhanobut.wasp.http.EndPoint;
 import com.orhanobut.wasp.http.GET;
-import com.orhanobut.wasp.http.Header;
-import com.orhanobut.wasp.http.Mock;
-import com.orhanobut.wasp.http.POST;
-import com.orhanobut.wasp.http.PUT;
-import com.orhanobut.wasp.http.QueryMap;
 import com.orhanobut.wasp.http.Query;
 
 import java.util.List;
-import java.util.Map;
 
 public interface MyService {
 
-    @Auth
     @GET("/api/public/v1.0/movie.json")
     void getMovies(
             @Query("apikey") String apikey,
-            @Query("q") String q,
+            @Query("q") String searchQuery,
             CallBack<List<Movie>> callBack
     );
 
@@ -60,9 +49,7 @@ public interface MyService {
             CallBack<Movie> callBack
     );
 
-    @EndPoint("http://api.rottentomatoes.com")
     @DELETE("/delete")
-
     @GET("/get")
     void get(
             @Query("test test2") String value,

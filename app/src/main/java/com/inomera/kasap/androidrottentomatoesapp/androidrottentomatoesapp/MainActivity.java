@@ -2,9 +2,8 @@ package com.inomera.kasap.androidrottentomatoesapp.androidrottentomatoesapp;
 /**
  * Created by Menaf on 17.06.2015
  */
-import android.support.v4.view.ViewPager;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+import android.support.v4.view.ViewPager;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -13,31 +12,29 @@ import com.inomera.kasap.androidrottentomatoesapp.R;
 import com.inomera.kasap.androidrottentomatoesapp.common.view.SlidingTabLayout;
 
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends BaseActivity {
 
     // Declaring Your View and Variables
 
+    //todo use butterknife
     Toolbar toolbar;
     ViewPager pager;
     ViewPagerAdapter adapter;
     SlidingTabLayout tabs;
-    CharSequence Titles[]={"Box Office","Upcoming","In Theater","Opening"};
-    int numbOfTabs = Titles.length;
+    CharSequence titles[]={"Box Office","Upcoming","In Theater","Opening"};
+    int numbOfTabs = titles.length;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
         // Creating The Toolbar and setting it as the Toolbar for the activity
-
         toolbar = (Toolbar) findViewById(R.id.tool_bar);
         setSupportActionBar(toolbar);
 
-
-        // Creating The ViewPagerAdapter and Passing Fragment Manager, Titles fot the Tabs and Number Of Tabs.
-        adapter =  new ViewPagerAdapter(getSupportFragmentManager(),Titles, numbOfTabs);
+        // Creating The ViewPagerAdapter and Passing Fragment Manager, titles fot the Tabs and Number Of Tabs.
+        adapter =  new ViewPagerAdapter(getSupportFragmentManager(), titles, numbOfTabs);
 
         // Assigning ViewPager View and setting the adapter
         pager = (ViewPager) findViewById(R.id.pager);
@@ -46,11 +43,12 @@ public class MainActivity extends AppCompatActivity {
         // Assigning the Sliding Tab Layout View
         tabs = (SlidingTabLayout) findViewById(R.id.tabs);
 
+        final int color = getResources().getColor(R.color.tabs_scroll_color);
         // Setting Custom Color for the Scroll bar indicator of the Tab View
         tabs.setCustomTabColorizer(new SlidingTabLayout.TabColorizer() {
             @Override
             public int getIndicatorColor(int position) {
-                return getResources().getColor(R.color.tabsScrollColor);
+                return color;
             }
 
             @Override
@@ -63,7 +61,6 @@ public class MainActivity extends AppCompatActivity {
         tabs.setViewPager(pager);
 
     }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

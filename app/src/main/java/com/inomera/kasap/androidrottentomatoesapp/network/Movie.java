@@ -1,4 +1,4 @@
-package com.inomera.kasap.androidrottentomatoesapp.common.WASP;
+package com.inomera.kasap.androidrottentomatoesapp.network;
 
 import android.os.Parcel;
 import android.os.Parcelable;
@@ -7,9 +7,9 @@ import android.os.Parcelable;
  * Created by Menaf on 17.06.2015
  */
 public class Movie implements Parcelable {
-
     String title;
     int id;
+    int year;
 
     public String getTitle() {
         return title;
@@ -22,8 +22,6 @@ public class Movie implements Parcelable {
     public int getYear() {
         return year;
     }
-
-    int year;
 
     @Override
     public int describeContents() {

@@ -14,8 +14,8 @@ import android.widget.Toast;
 
 import com.inomera.kasap.androidrottentomatoesapp.R;
 import com.inomera.kasap.androidrottentomatoesapp.androidrottentomatoesapp.MyAdapter;
-import com.inomera.kasap.androidrottentomatoesapp.common.WASP.Movie;
-import com.inomera.kasap.androidrottentomatoesapp.common.WASP.WaspApplication;
+import com.inomera.kasap.androidrottentomatoesapp.network.Movie;
+import com.inomera.kasap.androidrottentomatoesapp.androidrottentomatoesapp.App;
 import com.orhanobut.wasp.CallBack;
 import com.orhanobut.wasp.WaspError;
 
@@ -49,7 +49,7 @@ public class OpeningFragment extends Fragment {
 
     private void getOpening() {
 
-        WaspApplication.getService().getOpening("n594qzwyec5cdgr3tdrpfee3", new CallBack<Movie>() {
+        App.getService().getOpening("n594qzwyec5cdgr3tdrpfee3", new CallBack<Movie>() {
 
 
             @Override

@@ -4,9 +4,7 @@ package com.inomera.kasap.androidrottentomatoesapp.common.fragments;
  */
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,7 +15,7 @@ import com.inomera.kasap.androidrottentomatoesapp.androidrottentomatoesapp.MyAda
 
 import java.util.ArrayList;
 
-public class BoxOfficeFragment extends Fragment {
+public class BoxOfficeFragment extends BaseFragment {
 
     private RecyclerView mRecyclerView;
     private MyAdapter mAdapter;
