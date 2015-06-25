@@ -30,11 +30,11 @@ public interface MyService {
             CallBack<List<Movie>> callBack
     );
 
-    @GET("/api/public/v1.0/id.json")
+    /*@GET("/api/public/v1.0/id.json")
     void getMovie(
             @Query("apikey") String apikey,
             CallBack<Movie> callBack
-    );
+    );*/
 
     @GET("/api/public/v1.0/lists/movies/box_office.json")
     void getBoxOffice(
