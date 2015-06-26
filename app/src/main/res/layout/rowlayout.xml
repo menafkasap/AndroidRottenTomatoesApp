@@ -10,7 +10,7 @@
     app:elevation="2dp">
 
     <LinearLayout
-        android:layout_width="fill_parent"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:padding="6dip">
@@ -19,8 +19,9 @@
             android:id="@+id/icon"
             android:layout_width="0dp"
             android:layout_height="fill_parent"
-            android:layout_weight="2"
-            android:src="@drawable/emma"/>
+            android:layout_weight="5"
+            android:src="@drawable/emma"
+            tools:contentDistribution="false"/>
 
         <LinearLayout
             android:layout_width="0dp"

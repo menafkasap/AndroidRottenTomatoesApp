@@ -10,11 +10,10 @@ import com.orhanobut.wasp.http.Query;
 
 import java.util.List;
 
-public interface MyService {
+public interface WaspService {
 
     @GET("/api/public/v1.0/movie.json")
     void getMovies(
-            @Query("apikey") String apikey,
             @Query("q") String searchQuery,
             CallBack<List<Movie>> callBack
     );
@@ -37,16 +36,15 @@ public interface MyService {
             CallBack<Movie> callBack
     );
 
-    @GET("/api/public/v1.0/lists/movies/in_theaters.json")
+    @GET("/movies/in_theaters.json")
     void getInTheaters(
             @Query("apikey") String apikey,
             CallBack<Movie> callBack
     );
 
-    @GET("/api/public/v1.0/lists/movies/opening.json")
+    @GET("/lists/movies/opening.json")
     void getOpening(
-            @Query("apikey") String apikey,
-            CallBack<Movie> callBack
+            CallBack<List<Movie>> callBack
     );
 
     @DELETE("/delete")

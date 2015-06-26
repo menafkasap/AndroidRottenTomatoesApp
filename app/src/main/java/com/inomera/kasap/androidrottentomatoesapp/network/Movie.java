@@ -11,18 +11,6 @@ public class Movie implements Parcelable {
     int id;
     int year;
 
-    public String getTitle() {
-        return title;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public int getYear() {
-        return year;
-    }
-
     @Override
     public int describeContents() {
         return 0;
@@ -33,9 +21,6 @@ public class Movie implements Parcelable {
         dest.writeString(this.title);
         dest.writeInt(this.id);
         dest.writeInt(this.year);
-    }
-
-    public Movie() {
     }
 
     protected Movie(Parcel in) {

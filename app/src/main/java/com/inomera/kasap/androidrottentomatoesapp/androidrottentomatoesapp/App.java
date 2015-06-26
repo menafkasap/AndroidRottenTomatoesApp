@@ -2,9 +2,13 @@ package com.inomera.kasap.androidrottentomatoesapp.androidrottentomatoesapp;
 
 import android.app.Application;
 
-import com.inomera.kasap.androidrottentomatoesapp.network.MyService;
+import com.inomera.kasap.androidrottentomatoesapp.network.WaspService;
 import com.orhanobut.wasp.Wasp;
 import com.orhanobut.wasp.utils.LogLevel;
+import com.orhanobut.wasp.utils.RequestInterceptor;
+import com.orhanobut.wasp.utils.SimpleInterceptor;
+
+import java.util.Map;
 
 /**
  * @author Orhan Obut
@@ -12,9 +16,10 @@ import com.orhanobut.wasp.utils.LogLevel;
 @SuppressWarnings("unused")
 public class App extends Application {
 
-    private static MyService service;
+    private static WaspService service;
 
-    public static MyService getService() {
+
+    public static WaspService getService() {
         return service;
     }
 
@@ -22,14 +27,20 @@ public class App extends Application {
     public void onCreate() {
         super.onCreate();
 
-        //todo create and set requestinterceptor
-
+        RequestInterceptor interceptor = new SimpleInterceptor() {
+            @Override
+            public void onQueryParamsAdded(Map params) {
+                super.onQueryParamsAdded(params);
+                params.put("apikey","n594qzwyec5cdgr3tdrpfee3");
+            }
+        };
 
         service = new Wasp.Builder(this)
-                .setEndpoint("http://api.rottentomatoes.com")
+                .setEndpoint("http://api.rottentomatoes.com/api/public/v1.0")
                 .setLogLevel(LogLevel.FULL)
+                .setRequestInterceptor(interceptor)
                 .build()
-                .create(MyService.class);
+                .create(WaspService.class);
 
     }
 }
