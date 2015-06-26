@@ -19,7 +19,7 @@
             android:id="@+id/icon"
             android:layout_width="0dp"
             android:layout_height="fill_parent"
-            android:layout_weight="5"
+            android:layout_weight="2"
             android:src="@drawable/emma"
             tools:contentDistribution="false"/>
 

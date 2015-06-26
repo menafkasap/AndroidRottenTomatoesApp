@@ -4,47 +4,40 @@ package com.inomera.kasap.androidrottentomatoesapp.androidrottentomatoesapp;
  * Created by Menaf on 17.06.2015
  */
 import android.support.v7.widget.RecyclerView;
+import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.inomera.kasap.androidrottentomatoesapp.R;
+import com.inomera.kasap.androidrottentomatoesapp.network.Movie;
 
-import java.util.ArrayList;
+import java.util.List;
 
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
-    private ArrayList<String> mDataset;
+    private List<Movie> mDataset;
 
     // Provide a reference to the views for each data item
     // Complex data items may need more than one view per item, and
     // you provide access to all the views for a data item in a view holder
     public class ViewHolder extends RecyclerView.ViewHolder {
         // each data item is just a string in this case
-        public TextView txtHeader;
-        public TextView txtFooter;
+        public TextView movieTitle;
+        public TextView movieYear;
+        public Html.ImageGetter icon;
 
         public ViewHolder(View v) {
             super(v);
-            txtHeader = (TextView) v.findViewById(R.id.firstLine);
-            txtFooter = (TextView) v.findViewById(R.id.secondLine);
+            movieTitle = (TextView) v.findViewById(R.id.firstLine);
+            movieYear = (TextView) v.findViewById(R.id.secondLine);
         }
     }
 
-    public void add(int position, String item) {
-        mDataset.add(position, item);
-        notifyItemInserted(position);
-    }
-
-    public void remove(String item) {
-        int position = mDataset.indexOf(item);
-        mDataset.remove(position);
-        notifyItemRemoved(position);
-    }
-
     // Provide a suitable constructor (depends on the kind of dataset)
-    public MyAdapter(ArrayList<String> myDataset) {
+    public MyAdapter(List<Movie> myDataset) {
         mDataset = myDataset;
     }
 
@@ -61,20 +54,18 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
 
     // Replace the contents of a view (invoked by the layout manager)
     @Override
-    public void onBindViewHolder(ViewHolder holder, int position) {
+    public void onBindViewHolder(final ViewHolder holder, int position) {
         // - get element from your dataset at this position
         // - replace the contents of the view with that element
-        final String name = mDataset.get(position);
-        holder.txtHeader.setText(mDataset.get(position));
-        holder.txtHeader.setOnClickListener(new OnClickListener() {
+        holder.movieTitle.setText(mDataset.get(position).getTitle());
+        holder.movieYear.setText("(" + mDataset.get(position).getYear() + ")");
+        holder.movieTitle.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                remove(name);
+                Toast toast = Toast.makeText(v.getContext(), "Do not Press!!", Toast.LENGTH_SHORT);
+                toast.show();
             }
         });
-
-        holder.txtFooter.setText("Footer: " + mDataset.get(position));
-
     }
 
     // Return the size of your dataset (invoked by the layout manager)

@@ -12,37 +12,47 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.inomera.kasap.androidrottentomatoesapp.R;
+import com.inomera.kasap.androidrottentomatoesapp.androidrottentomatoesapp.App;
 import com.inomera.kasap.androidrottentomatoesapp.androidrottentomatoesapp.MyAdapter;
-
-import java.util.ArrayList;
+import com.inomera.kasap.androidrottentomatoesapp.network.MovieResponse;
+import com.orhanobut.wasp.CallBack;
+import com.orhanobut.wasp.WaspError;
 
 public class InTheatersFragment extends Fragment {
 
     private RecyclerView mRecyclerView;
-    private MyAdapter mAdapter;
-    private RecyclerView.LayoutManager mLayoutManager;
 
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View v =inflater.inflate(R.layout.fragment_in_theaters,container,false);
-        mRecyclerView = (RecyclerView) v.findViewById(R.id.my_recycler_view);
+        View v = inflater.inflate(R.layout.fragment_in_theaters, container, false);
 
+        mRecyclerView = (RecyclerView) v.findViewById(R.id.my_recycler_view);
         mRecyclerView.setHasFixedSize(true);
 
         // use a linear layout manager
-        mLayoutManager = new LinearLayoutManager(getActivity());
+        LinearLayoutManager mLayoutManager = new LinearLayoutManager(getActivity());
         mRecyclerView.setLayoutManager(mLayoutManager);
-
-        ArrayList<String> input = new ArrayList<String>();
-        for (int i = 0; i < 100; i++) {
-            input.add("Test" + i);
-        }
-        // specify an adapter (see also next example)
-        mAdapter = new MyAdapter(input);
-        mRecyclerView.setAdapter(mAdapter);
-        mAdapter.remove("Test1");
+        getInTheaters();
         return v;
+    }
+
+    private void getInTheaters() {
+        App.getService().getInTheaters(new CallBack<MovieResponse>() {
+
+            @Override
+            public void onSuccess(MovieResponse movieResponse) {
+                MyAdapter mAdapter = new MyAdapter(movieResponse.getMovies());
+                mRecyclerView.setAdapter(mAdapter);
+            }
+
+            @Override
+            public void onError(WaspError error) {
+                Toast toast = Toast.makeText(getActivity(), error.getErrorMessage(), Toast.LENGTH_SHORT);
+                toast.show();
+            }
+        });
     }
 }

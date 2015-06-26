@@ -9,6 +9,19 @@ import android.os.Parcelable;
 public class Movie implements Parcelable {
     String title;
     int id;
+
+    public int getYear() {
+        return year;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
     int year;
 
     @Override
