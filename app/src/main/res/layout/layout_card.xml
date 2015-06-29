@@ -12,27 +12,32 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
+        android:orientation="vertical"
         android:padding="6dip">
 
         <ImageView
             android:id="@+id/icon"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:src="@drawable/emma"
-            tools:contentDistribution="false" />
+            android:layout_gravity="center"
+            android:src="@drawable/emma" />
 
         <TextView
             android:id="@+id/firstLine"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:gravity="center"
             android:textSize="16sp"
             tools:text="first line" />
 
         <TextView
             android:id="@+id/secondLine"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_height="26dip"
+            android:layout_gravity="center_vertical"
+            android:ellipsize="end"
             android:textSize="12sp"
             tools:text="second line" />
 

@@ -17,14 +17,12 @@ public class ViewPagerAdapter extends FragmentStatePagerAdapter {
     CharSequence Titles[]; // This will Store the titles of the Tabs which are Going to be passed when com.inomera.kasap.androidrottentomatoesapp.androidrottentomatoesapp.ViewPagerAdapter is created
     int NumbOfTabs; // Store the number of tabs, this will also be passed when the com.inomera.kasap.androidrottentomatoesapp.androidrottentomatoesapp.ViewPagerAdapter is created
 
-
     // Build a Constructor and assign the passed Values to appropriate values in the class
     public ViewPagerAdapter(FragmentManager fm, CharSequence mTitles[], int mNumbOfTabsumb) {
         super(fm);
 
         this.Titles = mTitles;
         this.NumbOfTabs = mNumbOfTabsumb;
-
     }
 
     //This method return the fragment for the every position in the View Pager
@@ -36,22 +34,15 @@ public class ViewPagerAdapter extends FragmentStatePagerAdapter {
             return new BoxOfficeFragment();
         } else if (position == 1) // if the position is 0 we are returning the upcoming tab
         {
-            UpcomingFragment upcomingFragment = new UpcomingFragment();
-            return upcomingFragment;
+            return new UpcomingFragment();
         } else if (position == 2) // if the position is 0 we are returning the in theaters tab
         {
-            InTheatersFragment inTheatersFragment = new InTheatersFragment();
-            return inTheatersFragment;
+            return new InTheatersFragment();
         } else             // As we are having 4 tabs it must be opening so we are returning opening tab
         {
-            OpeningFragment openingFragment = new OpeningFragment();
-            return openingFragment;
+            return new OpeningFragment();
         }
-
-
     }
-
-    // This method return the titles for the Tabs in the Tab Strip
 
     @Override
     public CharSequence getPageTitle(int position) {
