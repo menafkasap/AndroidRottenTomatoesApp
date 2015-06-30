@@ -1,5 +1,9 @@
 package com.inomera.kasap.androidrottentomatoesapp.common.fragments;
+/**
+ * Created by Menaf on 29.06.2015
+ */
 
+import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
@@ -11,123 +15,49 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.inomera.kasap.androidrottentomatoesapp.R;
-import com.inomera.kasap.androidrottentomatoesapp.androidrottentomatoesapp.App;
 import com.inomera.kasap.androidrottentomatoesapp.androidrottentomatoesapp.MyAdapter;
 import com.inomera.kasap.androidrottentomatoesapp.network.Movie;
-import com.inomera.kasap.androidrottentomatoesapp.network.MovieResponse;
-import com.orhanobut.wasp.CallBack;
 import com.orhanobut.wasp.WaspError;
 
 import java.util.List;
 
-/**
- * @author Emmar Kardeslik
- */
 public abstract class BaseFragment extends Fragment {
 
     protected static final int SPAN_COUNT = 2;
+    protected static final int LAYOUT_TYPE_GRID = 3;
+    protected static final int LAYOUT_TYPE_LINEAR = 3;
     protected RecyclerView mRecyclerView;
 
+    protected abstract int getLayoutType();
 
-    public View createView(LayoutInflater inflater, @Nullable ViewGroup container, String layout, int tabNumber) {
+    @Nullable
+    @Override
+    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_base, container, false);
-
         mRecyclerView = (RecyclerView) v.findViewById(R.id.my_recycler_view);
         mRecyclerView.setHasFixedSize(true);
-
         // use a linear or grid layout manager
-        if (layout.equals("grid")) {
+        if (getLayoutType() == LAYOUT_TYPE_GRID) {
             GridLayoutManager mLayoutManager = new GridLayoutManager(getActivity(), SPAN_COUNT);
             mRecyclerView.setLayoutManager(mLayoutManager);
         } else {
             LinearLayoutManager mLayoutManager = new LinearLayoutManager(getActivity());
             mRecyclerView.setLayoutManager(mLayoutManager);
         }
-
-        //call methods by tab number
-        if (tabNumber == 1) {
-            getBoxOffice();
-        } else if (tabNumber == 2) {
-            getUpcoming();
-        } else if (tabNumber == 3) {
-            getInTheaters();
-        } else {
-            getOpening();
-        }
         return v;
     }
 
-
-    public void setAdapter(List<Movie> movieList) {
+    protected void setAdapter(List<Movie> movieList) {
         MyAdapter mAdapter = new MyAdapter(movieList);
         mRecyclerView.setAdapter(mAdapter);
     }
 
-    private void showToast(WaspError error) {
+    protected void showToast(WaspError error) {
         Toast toast = Toast.makeText(getActivity(), error.getErrorMessage(), Toast.LENGTH_SHORT);
         toast.show();
     }
 
-    private void getBoxOffice() {
-        App.getService().getBoxOffice(new CallBack<MovieResponse>() {
 
-            @Override
-            public void onSuccess(MovieResponse movieResponse) {
-                setAdapter(movieResponse.getMovies());
-            }
 
-            @Override
-            public void onError(WaspError error) {
-                showToast(error);
-            }
-        });
-    }
 
-    private void getInTheaters() {
-        App.getService().getInTheaters(new CallBack<MovieResponse>() {
-
-            @Override
-            public void onSuccess(MovieResponse movieResponse) {
-                setAdapter(movieResponse.getMovies());
-
-            }
-
-            @Override
-            public void onError(WaspError error) {
-                showToast(error);
-            }
-        });
-    }
-
-    private void getOpening() {
-        App.getService().getOpening(new CallBack<MovieResponse>() {
-
-            @Override
-            public void onSuccess(MovieResponse movieResponse) {
-                setAdapter(movieResponse.getMovies());
-
-            }
-
-            @Override
-            public void onError(WaspError error) {
-                showToast(error);
-            }
-        });
-    }
-
-    private void getUpcoming() {
-        App.getService().getUpcoming(new CallBack<MovieResponse>() {
-
-            @Override
-            public void onSuccess(MovieResponse movieResponse) {
-                setAdapter(movieResponse.getMovies());
-
-            }
-
-            @Override
-            public void onError(WaspError error) {
-                showToast(error);
-            }
-        });
-    }
 }

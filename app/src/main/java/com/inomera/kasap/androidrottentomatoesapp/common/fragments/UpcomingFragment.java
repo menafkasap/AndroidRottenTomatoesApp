@@ -5,16 +5,37 @@ package com.inomera.kasap.androidrottentomatoesapp.common.fragments;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
+
+import com.inomera.kasap.androidrottentomatoesapp.androidrottentomatoesapp.App;
+import com.inomera.kasap.androidrottentomatoesapp.network.MovieResponse;
+import com.orhanobut.wasp.CallBack;
+import com.orhanobut.wasp.WaspError;
 
 public class UpcomingFragment extends BaseFragment {
 
     @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-
-        return createView(inflater, container, "grid", 2);
+    protected int getLayoutType() {
+        return LAYOUT_TYPE_GRID;
     }
 
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        getUpcoming();
+    }
+
+    private void getUpcoming() {
+        App.getService().getUpcoming(new CallBack<MovieResponse>() {
+
+            @Override
+            public void onSuccess(MovieResponse movieResponse) {
+                setAdapter(movieResponse.getMovies());
+            }
+
+            @Override
+            public void onError(WaspError error) {
+                showToast(error);
+            }
+        });
+    }
 }

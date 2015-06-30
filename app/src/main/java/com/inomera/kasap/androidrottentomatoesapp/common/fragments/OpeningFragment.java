@@ -5,15 +5,37 @@ package com.inomera.kasap.androidrottentomatoesapp.common.fragments;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
+
+import com.inomera.kasap.androidrottentomatoesapp.androidrottentomatoesapp.App;
+import com.inomera.kasap.androidrottentomatoesapp.network.MovieResponse;
+import com.orhanobut.wasp.CallBack;
+import com.orhanobut.wasp.WaspError;
 
 public class OpeningFragment extends BaseFragment {
 
     @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+    protected int getLayoutType() {
+        return LAYOUT_TYPE_LINEAR;
+    }
 
-        return createView(inflater, container, "linear", 4);
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        getOpening();
+    }
+
+    private void getOpening() {
+        App.getService().getOpening(new CallBack<MovieResponse>() {
+
+            @Override
+            public void onSuccess(MovieResponse movieResponse) {
+                setAdapter(movieResponse.getMovies());
+            }
+
+            @Override
+            public void onError(WaspError error) {
+                showToast(error);
+            }
+        });
     }
 }
