@@ -14,7 +14,7 @@ import com.orhanobut.wasp.WaspError;
 public class UpcomingFragment extends BaseFragment {
 
     @Override
-    protected int getLayoutType() {
+    protected String getLayoutType() {
         return LAYOUT_TYPE_GRID;
     }
 

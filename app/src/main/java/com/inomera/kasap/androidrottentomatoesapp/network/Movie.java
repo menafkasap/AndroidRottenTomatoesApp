@@ -3,6 +3,8 @@ package com.inomera.kasap.androidrottentomatoesapp.network;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import com.google.gson.annotations.SerializedName;
+
 import java.util.ArrayList;
 
 /**
@@ -13,14 +15,14 @@ public class Movie implements Parcelable {
     int id;
     String title;
     int year;
-    String mpaa_rating;
-    int runtime;
-    String critics_consensus;
+    @SerializedName("mpaa_rating") String mpaaRating;
+    String runtime;
+    @SerializedName("critics_consensus") String criticsConsensus;
     Ratings rating;
     String synopsis;
-    Posters poster;
-    ArrayList<Cast> abridged_cast;
-    ArrayList<Director> abridged_directors;
+    Poster posters;
+    @SerializedName("abridged_cast") ArrayList<Cast> abridgedCast;
+    @SerializedName("abridged_directors") ArrayList<Director> abridgedDirectors;
     String studio;
 
     public int getId() {
@@ -35,16 +37,16 @@ public class Movie implements Parcelable {
         return year;
     }
 
-    public String getMpaa_rating() {
-        return mpaa_rating;
+    public String getMpaaRating() {
+        return mpaaRating;
     }
 
-    public int getRuntime() {
+    public String getRuntime() {
         return runtime;
     }
 
-    public String getCritics_consensus() {
-        return critics_consensus;
+    public String getCriticsConsensus() {
+        return criticsConsensus;
     }
 
     public Ratings getRating() {
@@ -55,21 +57,19 @@ public class Movie implements Parcelable {
         return synopsis;
     }
 
-    public Posters getPoster() {
-        return poster;
+    public Poster getPosters() {
+        return posters;
     }
 
-    public ArrayList<Cast> getAbridged_cast() {
-        return abridged_cast;
+    public ArrayList<Cast> getAbridgedCast() {
+        return abridgedCast;
     }
 
-    public ArrayList<Director> getAbridged_directors() {
-        return abridged_directors;
+    public ArrayList<Director> getAbridgedDirectors() {
+        return abridgedDirectors;
     }
 
-    public String getStudio() {
-        return studio;
-    }
+    public String getStudio() { return studio; }
 
     @Override
     public int describeContents() {
@@ -81,14 +81,14 @@ public class Movie implements Parcelable {
         dest.writeInt(this.id);
         dest.writeString(this.title);
         dest.writeInt(this.year);
-        dest.writeString(this.mpaa_rating);
-        dest.writeInt(this.runtime);
-        dest.writeString(this.critics_consensus);
+        dest.writeString(this.mpaaRating);
+        dest.writeString(this.runtime);
+        dest.writeString(this.criticsConsensus);
         dest.writeParcelable(this.rating, 0);
         dest.writeString(this.synopsis);
-        dest.writeParcelable(this.poster, 0);
-        dest.writeTypedList(abridged_cast);
-        dest.writeTypedList(abridged_directors);
+        dest.writeParcelable(this.posters, 0);
+        dest.writeTypedList(abridgedCast);
+        dest.writeTypedList(abridgedDirectors);
         dest.writeString(this.studio);
     }
 
@@ -99,14 +99,14 @@ public class Movie implements Parcelable {
         this.id = in.readInt();
         this.title = in.readString();
         this.year = in.readInt();
-        this.mpaa_rating = in.readString();
-        this.runtime = in.readInt();
-        this.critics_consensus = in.readString();
+        this.mpaaRating = in.readString();
+        this.runtime = in.readString();
+        this.criticsConsensus = in.readString();
         this.rating = in.readParcelable(Ratings.class.getClassLoader());
         this.synopsis = in.readString();
-        this.poster = in.readParcelable(Posters.class.getClassLoader());
-        this.abridged_cast = in.createTypedArrayList(Cast.CREATOR);
-        this.abridged_directors = in.createTypedArrayList(Director.CREATOR);
+        this.posters = in.readParcelable(Poster.class.getClassLoader());
+        this.abridgedCast = in.createTypedArrayList(Cast.CREATOR);
+        this.abridgedDirectors = in.createTypedArrayList(Director.CREATOR);
         this.studio = in.readString();
     }
 

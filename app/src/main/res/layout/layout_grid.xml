@@ -17,16 +17,17 @@
 
         <ImageView
             android:id="@+id/icon"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:src="@drawable/emma" />
+            android:layout_width="162dp"
+            android:layout_height="240dp"
+            android:scaleType="fitXY"
+            android:adjustViewBounds="true"
+            android:layout_gravity="center"  />
 
         <TextView
             android:id="@+id/firstLine"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_gravity="center"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|center"
             android:gravity="center"
             android:textSize="16sp"
             tools:text="first line" />
@@ -34,9 +35,10 @@
         <TextView
             android:id="@+id/secondLine"
             android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|center"
             android:gravity="center"
-            android:layout_height="26dip"
-            android:layout_gravity="center_vertical"
+            android:maxLines="3"
             android:ellipsize="end"
             android:textSize="12sp"
             tools:text="second line" />

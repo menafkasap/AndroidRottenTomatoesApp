@@ -24,11 +24,11 @@ import java.util.List;
 public abstract class BaseFragment extends Fragment {
 
     protected static final int SPAN_COUNT = 2;
-    protected static final int LAYOUT_TYPE_GRID = 3;
-    protected static final int LAYOUT_TYPE_LINEAR = 3;
+    protected static final String LAYOUT_TYPE_GRID = "grid";
+    protected static final String LAYOUT_TYPE_LINEAR = "linear";
     protected RecyclerView mRecyclerView;
 
-    protected abstract int getLayoutType();
+    protected abstract String  getLayoutType();
 
     @Nullable
     @Override
@@ -48,7 +48,7 @@ public abstract class BaseFragment extends Fragment {
     }
 
     protected void setAdapter(List<Movie> movieList) {
-        MyAdapter mAdapter = new MyAdapter(movieList);
+        MyAdapter mAdapter = new MyAdapter(movieList, getLayoutType());
         mRecyclerView.setAdapter(mAdapter);
     }
 

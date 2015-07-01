@@ -1,7 +1,7 @@
 package com.inomera.kasap.androidrottentomatoesapp.common.view;
 
 /**
- * Created by Sorry on 17.06.2015.
+ * Created by Menaf on 17.06.2015
  */
 /*
  * Copyright (C) 2013 The Android Open Source Project
@@ -226,7 +226,7 @@ public class SlidingTabLayout extends HorizontalScrollView {
             tabView.setOnClickListener(tabClickListener);
 
             mTabStrip.addView(tabView);
-            tabTitleView.setTextColor(getResources().getColorStateList(R.color.selector));
+            tabTitleView.setTextColor(getResources().getColorStateList(R.color.switch_thumb_material_light));
             tabTitleView.setTextSize(14);
         }
     }

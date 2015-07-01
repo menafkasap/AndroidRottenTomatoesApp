@@ -10,8 +10,13 @@ import java.util.ArrayList;
  */
 public class Cast implements Parcelable{
 
+    int id;
     String name;
     ArrayList<String> characters;
+
+    public int getId() {
+        return id;
+    }
 
     public String getName() {
         return name;
@@ -21,6 +26,9 @@ public class Cast implements Parcelable{
         return characters;
     }
 
+    public Cast() {
+    }
+
     @Override
     public int describeContents() {
         return 0;
@@ -28,14 +36,13 @@ public class Cast implements Parcelable{
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
+        dest.writeInt(this.id);
         dest.writeString(this.name);
         dest.writeStringList(this.characters);
     }
 
-    public Cast() {
-    }
-
     protected Cast(Parcel in) {
+        this.id = in.readInt();
         this.name = in.readString();
         this.characters = in.createStringArrayList();
     }

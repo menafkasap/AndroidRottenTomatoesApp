@@ -14,7 +14,7 @@ import com.orhanobut.wasp.WaspError;
 public class InTheatersFragment extends BaseFragment {
 
     @Override
-    protected int getLayoutType() {
+    protected String getLayoutType() {
         return LAYOUT_TYPE_LINEAR;
     }
 

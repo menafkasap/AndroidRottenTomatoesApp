@@ -3,29 +3,31 @@ package com.inomera.kasap.androidrottentomatoesapp.network;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import com.google.gson.annotations.SerializedName;
+
 /**
  * Created by Menaf on 30.06.2015
  */
 public class Ratings implements Parcelable{
-    String critics_rating;
-    int critics_score;
-    String audience_rating;
-    int audience_score;
+    @SerializedName("critics_rating") String criticsRating;
+    @SerializedName("critics_score") int criticsScore;
+    @SerializedName("audience_rating") String audienceRating;
+    @SerializedName("audience_score") int audienceScore;
 
-    public String getCritics_rating() {
-        return critics_rating;
+    public String getCriticsRating() {
+        return criticsRating;
     }
 
-    public int getCritics_score() {
-        return critics_score;
+    public int getCriticsScore() {
+        return criticsScore;
     }
 
-    public String getAudience_rating() {
-        return audience_rating;
+    public String getAudienceRating() {
+        return audienceRating;
     }
 
-    public int getAudience_score() {
-        return audience_score;
+    public int getAudienceScore() {
+        return audienceScore;
     }
 
     @Override
@@ -35,20 +37,20 @@ public class Ratings implements Parcelable{
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
-        dest.writeString(this.critics_rating);
-        dest.writeInt(this.critics_score);
-        dest.writeString(this.audience_rating);
-        dest.writeInt(this.audience_score);
+        dest.writeString(this.criticsRating);
+        dest.writeInt(this.criticsScore);
+        dest.writeString(this.audienceRating);
+        dest.writeInt(this.audienceScore);
     }
 
     public Ratings() {
     }
 
     protected Ratings(Parcel in) {
-        this.critics_rating = in.readString();
-        this.critics_score = in.readInt();
-        this.audience_rating = in.readString();
-        this.audience_score = in.readInt();
+        this.criticsRating = in.readString();
+        this.criticsScore = in.readInt();
+        this.audienceRating = in.readString();
+        this.audienceScore = in.readInt();
     }
 
     public static final Creator<Ratings> CREATOR = new Creator<Ratings>() {
