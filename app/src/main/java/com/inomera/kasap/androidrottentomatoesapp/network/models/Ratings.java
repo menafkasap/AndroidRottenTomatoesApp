@@ -1,4 +1,4 @@
-package com.inomera.kasap.androidrottentomatoesapp.network;
+package com.inomera.kasap.androidrottentomatoesapp.network.models;
 
 import android.os.Parcel;
 import android.os.Parcelable;

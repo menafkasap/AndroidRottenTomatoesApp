@@ -1,9 +1,10 @@
-package com.inomera.kasap.androidrottentomatoesapp.androidrottentomatoesapp;
+package com.inomera.kasap.androidrottentomatoesapp.common.adapters;
 
 /**
  * Created by Menaf on 17.06.2015
  */
 
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,15 +12,15 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.inomera.kasap.androidrottentomatoesapp.R;
-import com.inomera.kasap.androidrottentomatoesapp.network.Movie;
+import com.inomera.kasap.androidrottentomatoesapp.androidrottentomatoesapp.MovieActivity;
+import com.inomera.kasap.androidrottentomatoesapp.network.models.Movie;
 import com.orhanobut.wasp.Wasp;
 
 import java.util.List;
 
-public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
+public class DataAdapter extends RecyclerView.Adapter<DataAdapter.ViewHolder> {
     private List<Movie> mDataset;
     private String mLayout;
 
@@ -43,14 +44,14 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
     }
 
     // Provide a suitable constructor (depends on the kind of dataset)
-    public MyAdapter(List<Movie> myDataset, String layout) {
+    public DataAdapter(List<Movie> myDataset, String layout) {
         mDataset = myDataset;
         mLayout = layout;
     }
 
     // Create new views (invoked by the layout manager)
     @Override
-    public MyAdapter.ViewHolder onCreateViewHolder(ViewGroup parent,
+    public DataAdapter.ViewHolder onCreateViewHolder(ViewGroup parent,
                                                    int viewType) {
         // create a new view
         if (mLayout.equals("linear")) {
@@ -74,8 +75,9 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
         holder.view.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast toast = Toast.makeText(v.getContext(), "Don't Press...", Toast.LENGTH_SHORT);
-                toast.show();
+                Intent intent = new Intent(v.getContext(), MovieActivity.class);
+                intent.putExtra("Movie", mDataset.get(pos));
+                v.getContext().startActivity(intent);
             }
         });
     }

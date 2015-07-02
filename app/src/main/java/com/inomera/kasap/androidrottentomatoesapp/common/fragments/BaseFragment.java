@@ -15,8 +15,8 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.inomera.kasap.androidrottentomatoesapp.R;
-import com.inomera.kasap.androidrottentomatoesapp.androidrottentomatoesapp.MyAdapter;
-import com.inomera.kasap.androidrottentomatoesapp.network.Movie;
+import com.inomera.kasap.androidrottentomatoesapp.common.adapters.DataAdapter;
+import com.inomera.kasap.androidrottentomatoesapp.network.models.Movie;
 import com.orhanobut.wasp.WaspError;
 
 import java.util.List;
@@ -48,7 +48,7 @@ public abstract class BaseFragment extends Fragment {
     }
 
     protected void setAdapter(List<Movie> movieList) {
-        MyAdapter mAdapter = new MyAdapter(movieList, getLayoutType());
+        DataAdapter mAdapter = new DataAdapter(movieList, getLayoutType());
         mRecyclerView.setAdapter(mAdapter);
     }
 

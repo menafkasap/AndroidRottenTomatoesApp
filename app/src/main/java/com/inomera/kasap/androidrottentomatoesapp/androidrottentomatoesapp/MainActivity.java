@@ -9,6 +9,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.inomera.kasap.androidrottentomatoesapp.R;
+import com.inomera.kasap.androidrottentomatoesapp.common.adapters.ViewPagerAdapter;
 import com.inomera.kasap.androidrottentomatoesapp.common.view.SlidingTabLayout;
 
 
@@ -16,7 +17,6 @@ public class MainActivity extends BaseActivity {
 
     // Declaring Your View and Variables
 
-    //todo use butterknife
     Toolbar toolbar;
     ViewPager pager;
     ViewPagerAdapter adapter;

@@ -1,8 +1,10 @@
-package com.inomera.kasap.androidrottentomatoesapp.network;
+package com.inomera.kasap.androidrottentomatoesapp.network.service;
 
 /**
  * Created by Menaf on 19.06.2015
  */
+import com.inomera.kasap.androidrottentomatoesapp.network.models.Movie;
+import com.inomera.kasap.androidrottentomatoesapp.network.models.MovieResponse;
 import com.orhanobut.wasp.CallBack;
 import com.orhanobut.wasp.http.GET;
 import com.orhanobut.wasp.http.Path;

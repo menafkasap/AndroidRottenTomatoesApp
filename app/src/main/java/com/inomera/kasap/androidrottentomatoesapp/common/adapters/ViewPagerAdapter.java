@@ -1,4 +1,4 @@
-package com.inomera.kasap.androidrottentomatoesapp.androidrottentomatoesapp;
+package com.inomera.kasap.androidrottentomatoesapp.common.adapters;
 /**
  * Created by Sorry on 17.06.2015.
  */
@@ -14,8 +14,8 @@ import com.inomera.kasap.androidrottentomatoesapp.common.fragments.UpcomingFragm
 
 public class ViewPagerAdapter extends FragmentStatePagerAdapter {
 
-    CharSequence Titles[]; // This will Store the titles of the Tabs which are Going to be passed when com.inomera.kasap.androidrottentomatoesapp.androidrottentomatoesapp.ViewPagerAdapter is created
-    int NumbOfTabs; // Store the number of tabs, this will also be passed when the com.inomera.kasap.androidrottentomatoesapp.androidrottentomatoesapp.ViewPagerAdapter is created
+    CharSequence Titles[]; // This will Store the titles of the Tabs which are Going to be passed when com.inomera.kasap.androidrottentomatoesapp.common.adapters.ViewPagerAdapter is created
+    int NumbOfTabs; // Store the number of tabs, this will also be passed when the com.inomera.kasap.androidrottentomatoesapp.common.adapters.ViewPagerAdapter is created
 
     // Build a Constructor and assign the passed Values to appropriate values in the class
     public ViewPagerAdapter(FragmentManager fm, CharSequence mTitles[], int mNumbOfTabsumb) {

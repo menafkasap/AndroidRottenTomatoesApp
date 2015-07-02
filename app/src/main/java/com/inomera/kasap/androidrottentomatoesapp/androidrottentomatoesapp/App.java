@@ -2,7 +2,7 @@ package com.inomera.kasap.androidrottentomatoesapp.androidrottentomatoesapp;
 
 import android.app.Application;
 
-import com.inomera.kasap.androidrottentomatoesapp.network.WaspService;
+import com.inomera.kasap.androidrottentomatoesapp.network.service.WaspService;
 import com.orhanobut.wasp.Wasp;
 import com.orhanobut.wasp.utils.LogLevel;
 import com.orhanobut.wasp.utils.RequestInterceptor;

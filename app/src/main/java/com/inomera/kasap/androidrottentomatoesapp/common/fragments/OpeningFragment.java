@@ -7,7 +7,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 
 import com.inomera.kasap.androidrottentomatoesapp.androidrottentomatoesapp.App;
-import com.inomera.kasap.androidrottentomatoesapp.network.MovieResponse;
+import com.inomera.kasap.androidrottentomatoesapp.network.models.MovieResponse;
 import com.orhanobut.wasp.CallBack;
 import com.orhanobut.wasp.WaspError;
 
