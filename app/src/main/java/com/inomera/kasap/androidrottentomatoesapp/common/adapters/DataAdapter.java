@@ -70,7 +70,7 @@ public class DataAdapter extends RecyclerView.Adapter<DataAdapter.ViewHolder> {
         // - replace the contents of the view with that element
         holder.movieTitle.setText(mDataset.get(position).getTitle());
         holder.movieYear.setText(mDataset.get(position).getSynopsis());
-        Wasp.Image.from(mDataset.get(position).getPosters().getOriginal()).to(holder.icon).load();
+        Wasp.Image.from("http://" + mDataset.get(position).getPosters().getOriginal().replaceAll(".*=/...../","")).to(holder.icon).load();
         final int pos = position;
         holder.view.setOnClickListener(new OnClickListener() {
             @Override

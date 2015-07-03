@@ -33,6 +33,8 @@ public class MainActivity extends BaseActivity {
         toolbar = (Toolbar) findViewById(R.id.tool_bar);
         setSupportActionBar(toolbar);
 
+        this.setTitle("Rotten Tomatoes");
+
         // Creating The ViewPagerAdapter and Passing Fragment Manager, titles fot the Tabs and Number Of Tabs.
         adapter =  new ViewPagerAdapter(getSupportFragmentManager(), titles, numbOfTabs);
 
