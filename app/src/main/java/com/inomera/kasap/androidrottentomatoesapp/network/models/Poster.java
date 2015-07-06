@@ -17,6 +17,10 @@ public class Poster implements Parcelable {
         return original;
     }
 
+    public void setOriginal(String original) {
+        this.original = original;
+    }
+
     public String getThumbnail() {
         return thumbnail;
     }

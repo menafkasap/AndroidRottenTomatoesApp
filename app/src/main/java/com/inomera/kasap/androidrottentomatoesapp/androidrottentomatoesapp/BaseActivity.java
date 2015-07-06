@@ -11,7 +11,7 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     protected void showToast(String text) {
         Context context = getApplicationContext();
-        int duration = Toast.LENGTH_SHORT;
+        int duration = Toast.LENGTH_LONG;
 
         Toast toast = Toast.makeText(context, text, duration);
         toast.show();

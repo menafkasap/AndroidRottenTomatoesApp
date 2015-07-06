@@ -2,4 +2,7 @@
     <string name="app_name">Android Rotten Tomatoes App</string>
     <string name="action_settings">Settings</string>
     <string name="mob">Mobile:</string>
+    <string name="share">Share</string>
+    <string name="imdb">IMDB</string>
+    <string name="reviews">Reviews</string>
 </resources>

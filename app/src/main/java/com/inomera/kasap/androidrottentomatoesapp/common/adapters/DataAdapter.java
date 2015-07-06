@@ -17,6 +17,7 @@ import com.inomera.kasap.androidrottentomatoesapp.R;
 import com.inomera.kasap.androidrottentomatoesapp.androidrottentomatoesapp.MovieActivity;
 import com.inomera.kasap.androidrottentomatoesapp.network.models.Movie;
 import com.orhanobut.wasp.Wasp;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -66,11 +67,15 @@ public class DataAdapter extends RecyclerView.Adapter<DataAdapter.ViewHolder> {
     // Replace the contents of a view (invoked by the layout manager)
     @Override
     public void onBindViewHolder(final ViewHolder holder, int position) {
+
         // - get element from your dataset at this position
         // - replace the contents of the view with that element
         holder.movieTitle.setText(mDataset.get(position).getTitle());
         holder.movieYear.setText(mDataset.get(position).getSynopsis());
-        Wasp.Image.from("http://" + mDataset.get(position).getPosters().getOriginal().replaceAll(".*=/...../","")).to(holder.icon).load();
+        Wasp.Image.from( mDataset.get(position).getPosters().getProfile()).to(holder.icon).load();
+        Picasso.with(holder.view.getContext()).load("http://" + mDataset.get(position).getPosters().getOriginal().replaceAll(".*=/...../", "")).resize(100,160).into(holder.icon);
+
+
         final int pos = position;
         holder.view.setOnClickListener(new OnClickListener() {
             @Override

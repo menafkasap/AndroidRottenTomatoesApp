@@ -18,7 +18,7 @@ public class Movie implements Parcelable {
     @SerializedName("mpaa_rating") String mpaaRating;
     String runtime;
     @SerializedName("critics_consensus") String criticsConsensus;
-    Ratings rating;
+    Ratings ratings;
     String synopsis;
     Poster posters;
     @SerializedName("abridged_cast") ArrayList<Cast> abridgedCast;
@@ -49,8 +49,8 @@ public class Movie implements Parcelable {
         return criticsConsensus;
     }
 
-    public Ratings getRating() {
-        return rating;
+    public Ratings getRatings() {
+        return ratings;
     }
 
     public String getSynopsis() {
@@ -84,7 +84,7 @@ public class Movie implements Parcelable {
         dest.writeString(this.mpaaRating);
         dest.writeString(this.runtime);
         dest.writeString(this.criticsConsensus);
-        dest.writeParcelable(this.rating, 0);
+        dest.writeParcelable(this.ratings, 0);
         dest.writeString(this.synopsis);
         dest.writeParcelable(this.posters, 0);
         dest.writeTypedList(abridgedCast);
@@ -102,7 +102,7 @@ public class Movie implements Parcelable {
         this.mpaaRating = in.readString();
         this.runtime = in.readString();
         this.criticsConsensus = in.readString();
-        this.rating = in.readParcelable(Ratings.class.getClassLoader());
+        this.ratings = in.readParcelable(Ratings.class.getClassLoader());
         this.synopsis = in.readString();
         this.posters = in.readParcelable(Poster.class.getClassLoader());
         this.abridgedCast = in.createTypedArrayList(Cast.CREATOR);
