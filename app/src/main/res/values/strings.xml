@@ -4,5 +4,6 @@
     <string name="mob">Mobile:</string>
     <string name="share">Share</string>
     <string name="imdb">IMDB</string>
+    <string name="search">Search</string>
     <string name="reviews">Reviews</string>
 </resources>

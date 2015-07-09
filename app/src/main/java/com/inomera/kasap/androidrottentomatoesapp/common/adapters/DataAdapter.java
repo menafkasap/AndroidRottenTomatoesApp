@@ -73,7 +73,7 @@ public class DataAdapter extends RecyclerView.Adapter<DataAdapter.ViewHolder> {
         holder.movieTitle.setText(mDataset.get(position).getTitle());
         holder.movieYear.setText(mDataset.get(position).getSynopsis());
         Wasp.Image.from( mDataset.get(position).getPosters().getProfile()).to(holder.icon).load();
-        Picasso.with(holder.view.getContext()).load("http://" + mDataset.get(position).getPosters().getOriginal().replaceAll(".*=/...../", "")).resize(100,160).into(holder.icon);
+        Picasso.with(holder.view.getContext()).load("http://" + mDataset.get(position).getPosters().getOriginal().replaceAll(".*=/...../", "")).resize(200,320).into(holder.icon);
 
 
         final int pos = position;
