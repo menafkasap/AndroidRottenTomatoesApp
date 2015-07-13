@@ -37,7 +37,7 @@ public abstract class BaseFragment extends Fragment {
         mRecyclerView = (RecyclerView) v.findViewById(R.id.my_recycler_view);
         mRecyclerView.setHasFixedSize(true);
         // use a linear or grid layout manager
-        if (getLayoutType() == LAYOUT_TYPE_GRID) {
+        if (getLayoutType().equals(LAYOUT_TYPE_GRID)) {
             GridLayoutManager mLayoutManager = new GridLayoutManager(getActivity(), SPAN_COUNT);
             mRecyclerView.setLayoutManager(mLayoutManager);
         } else {

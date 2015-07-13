@@ -1,6 +1,6 @@
 package com.inomera.kasap.androidrottentomatoesapp.common.adapters;
 /**
- * Created by Sorry on 17.06.2015.
+ * Created by Menaf on 17.06.2015
  */
 
 import android.support.v4.app.Fragment;
