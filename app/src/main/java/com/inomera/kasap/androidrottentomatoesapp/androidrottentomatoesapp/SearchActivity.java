@@ -37,7 +37,10 @@ public class SearchActivity extends BaseActivity {
         toolbar = (Toolbar) findViewById(R.id.tool_bar);
         setSupportActionBar(toolbar);
 
-        mRecyclerView = (RecyclerView) findViewById(R.id.my_recycler_view);
+        getSupportActionBar().setHomeButtonEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        mRecyclerView = (RecyclerView) findViewById(R.id.search_recycler_view);
         mRecyclerView.setHasFixedSize(true);
 
         // use a linear layout manager
@@ -51,9 +54,6 @@ public class SearchActivity extends BaseActivity {
             String query = intent.getStringExtra(SearchManager.QUERY);
             getSearchMovies(query);
         }
-
-        mRecyclerView.setAdapter(mAdapter);
-
     }
 
     @Override
@@ -80,6 +80,9 @@ public class SearchActivity extends BaseActivity {
         if (id == R.id.action_settings) {
             return true;
         }
+        if (id == android.R.id.home) {
+            finish();
+        }
 
         return super.onOptionsItemSelected(item);
     }
@@ -90,6 +93,7 @@ public class SearchActivity extends BaseActivity {
             @Override
             public void onSuccess(MovieResponse movieResponse) {
                 mAdapter = new DataAdapter(movieResponse.getMovies(), LAYOUT_TYPE_LINEAR);
+                mRecyclerView.setAdapter(mAdapter);
             }
 
             @Override
