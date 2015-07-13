@@ -5,4 +5,4 @@
     android:layout_height="wrap_content"
     android:background="@color/color_primary"
     android:elevation="2dp"
-    android:theme="@style/Base.ThemeOverlay.AppCompat.Light" />
+    android:theme="@style/Base.ThemeOverlay.AppCompat.Dark" />

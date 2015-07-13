@@ -25,6 +25,8 @@ public class MovieActivity extends BaseActivity {
         toolbar = (Toolbar) findViewById(R.id.tool_bar);
         setSupportActionBar(toolbar);
 
+        //getSupportActionBar().setHomeButtonEnabled(true);
+
         if (savedInstanceState == null) {
             MovieFragment MovieFrag = new MovieFragment();
             FragmentTransaction ft = getFragmentManager().beginTransaction();

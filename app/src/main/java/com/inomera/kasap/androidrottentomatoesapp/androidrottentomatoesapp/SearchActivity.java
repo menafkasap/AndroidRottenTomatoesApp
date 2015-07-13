@@ -25,7 +25,7 @@ public class SearchActivity extends BaseActivity {
     }
 
     private void doMySearch(String query) {
-
+        showToast(query);
     }
 
 }
