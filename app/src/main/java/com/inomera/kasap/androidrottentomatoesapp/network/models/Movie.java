@@ -24,6 +24,16 @@ public class Movie implements Parcelable {
     @SerializedName("abridged_cast") ArrayList<Cast> abridgedCast;
     @SerializedName("abridged_directors") ArrayList<Director> abridgedDirectors;
     String studio;
+    @SerializedName("alternate_ids") AlternateIds alternateIds;
+    Links links;
+
+    public AlternateIds getAlternateIds() {
+        return alternateIds;
+    }
+
+    public Links getLinks() {
+        return links;
+    }
 
     public int getId() {
         return id;
@@ -71,6 +81,9 @@ public class Movie implements Parcelable {
 
     public String getStudio() { return studio; }
 
+    public Movie() {
+    }
+
     @Override
     public int describeContents() {
         return 0;
@@ -90,9 +103,8 @@ public class Movie implements Parcelable {
         dest.writeTypedList(abridgedCast);
         dest.writeTypedList(abridgedDirectors);
         dest.writeString(this.studio);
-    }
-
-    public Movie() {
+        dest.writeParcelable(this.alternateIds, 0);
+        dest.writeParcelable(this.links, 0);
     }
 
     protected Movie(Parcel in) {
@@ -108,6 +120,8 @@ public class Movie implements Parcelable {
         this.abridgedCast = in.createTypedArrayList(Cast.CREATOR);
         this.abridgedDirectors = in.createTypedArrayList(Director.CREATOR);
         this.studio = in.readString();
+        this.alternateIds = in.readParcelable(AlternateIds.class.getClassLoader());
+        this.links = in.readParcelable(Links.class.getClassLoader());
     }
 
     public static final Creator<Movie> CREATOR = new Creator<Movie>() {

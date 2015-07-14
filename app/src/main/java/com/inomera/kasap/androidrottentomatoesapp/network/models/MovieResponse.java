@@ -11,6 +11,11 @@ import java.util.List;
 public class MovieResponse implements Parcelable {
     int total;
     List<Movie> movies;
+    Links links;
+
+    public Links getLinks() {
+        return links;
+    }
 
     public List<Movie> getMovies() {
         return movies;
@@ -29,14 +34,19 @@ public class MovieResponse implements Parcelable {
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeInt(this.total);
         dest.writeTypedList(movies);
+        dest.writeParcelable(this.links, 0);
+    }
+
+    public MovieResponse() {
     }
 
     protected MovieResponse(Parcel in) {
         this.total = in.readInt();
         this.movies = in.createTypedArrayList(Movie.CREATOR);
+        this.links = in.readParcelable(Links.class.getClassLoader());
     }
 
-    public static final Parcelable.Creator<MovieResponse> CREATOR = new Parcelable.Creator<MovieResponse>() {
+    public static final Creator<MovieResponse> CREATOR = new Creator<MovieResponse>() {
         public MovieResponse createFromParcel(Parcel source) {
             return new MovieResponse(source);
         }
