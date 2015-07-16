@@ -12,6 +12,7 @@ import android.view.MenuItem;
 
 import com.inomera.kasap.androidrottentomatoesapp.R;
 import com.inomera.kasap.androidrottentomatoesapp.common.fragments.MovieFragment;
+import com.inomera.kasap.androidrottentomatoesapp.common.fragments.ReviewFragment;
 import com.inomera.kasap.androidrottentomatoesapp.network.models.Movie;
 
 /**
@@ -20,7 +21,6 @@ import com.inomera.kasap.androidrottentomatoesapp.network.models.Movie;
 public class MovieActivity extends BaseActivity {
 
     Toolbar toolbar;
-    private ShareActionProvider mShareActionProvider;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +39,8 @@ public class MovieActivity extends BaseActivity {
             FragmentTransaction ft = getFragmentManager().beginTransaction();
             ft.add(R.id.frame_container, MovieFrag);
             ft.commit();
+        } else {
+
         }
     }
 
@@ -46,11 +48,7 @@ public class MovieActivity extends BaseActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_movie, menu);
-        // Locate MenuItem with ShareActionProvider
-        MenuItem item = menu.findItem(R.id.share);
 
-        // Fetch and store ShareActionProvider
-        mShareActionProvider = (ShareActionProvider) MenuItemCompat.getActionProvider(item);
         return true;
     }
 
@@ -75,6 +73,14 @@ public class MovieActivity extends BaseActivity {
             Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(Uri.parse("http://www.imdb.com/title/tt" + myMovie.getAlternateIds().getImdb()) + "/?ref_=inth_ov_tt"));
             startActivity(browserIntent);
         }
+
+        if (id == R.id.review) {
+            ReviewFragment ReviewFrag = new ReviewFragment();
+            FragmentTransaction ft = getFragmentManager().beginTransaction();
+            ft.replace(R.id.frame_container, ReviewFrag);
+            ft.commit();
+        }
+
         if (id == android.R.id.home) {
             finish();
         }

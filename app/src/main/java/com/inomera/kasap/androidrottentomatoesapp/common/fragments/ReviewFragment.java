@@ -20,14 +20,12 @@ public class ReviewFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
-        ListView list;
-
         View v = inflater.inflate(R.layout.fragment_review, container, false);
 
         Reviews reviews = getActivity().getIntent().getParcelableExtra("Reviews");
         getActivity().setTitle(getActivity().getIntent().getStringExtra("Title"));
 
-        //list = (ListView) v.findViewById(R.id.list_view);
+        ListView list = (ListView) v.findViewById(R.id.list_view);
 
         ((TextView) v.findViewById(R.id.name)).setText(reviews.getCritic() + "/" + reviews.getFreshness());
         ((TextView) v.findViewById(R.id.date)).setText(reviews.getDate() + "/" + reviews.getPublication());
