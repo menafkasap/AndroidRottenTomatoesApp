@@ -77,7 +77,7 @@ public class MovieActivity extends BaseActivity {
         if (id == R.id.review) {
             ReviewFragment ReviewFrag = new ReviewFragment();
             FragmentTransaction ft = getFragmentManager().beginTransaction();
-            ft.replace(R.id.frame_container, ReviewFrag);
+//            ft.replace(R.id.frame_container, ReviewFrag);
             ft.commit();
         }
 

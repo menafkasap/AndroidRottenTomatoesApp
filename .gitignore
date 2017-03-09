@@ -17,12 +17,10 @@ local.properties
 proguard/
 # Log Files
 *.log
-.gradle
-/local.properties
-/.idea/workspace.xml
-/.idea/libraries
 .DS_Store
-/build
-.idea
+.idea/
 *.iml
 credential.properties
+gradle/
+gradlew
+gradlew.bat
